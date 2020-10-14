@@ -1,6 +1,7 @@
 #Game Of Three instructions
 
 #Prerequisites
+
 Java and docker should be installed
 
 #Run RabbitMq docker
