@@ -33,6 +33,7 @@ java -jar ./target/game-1.0-SNAPSHOT-jar-with-dependencies.jar player2 player1
 ````
 
 #Assumptions
+
 Names of players will always be different
 First player will be selected on lexicographical order of their names 
     eg: In lexicographical order 'player1' comes first 'player2' comes second  - player 1 will start
