@@ -1,6 +1,9 @@
 package me.dhk.game.model;
 
 import me.dhk.game.model.algo.DivideByThreeAlgo;
+import me.dhk.game.model.player.AutomaticPlayer;
+import me.dhk.game.model.player.ManualPlayer;
+import me.dhk.game.model.player.Player;
 import me.dhk.game.service.IRemoteService;
 import org.junit.Assert;
 import org.junit.Test;

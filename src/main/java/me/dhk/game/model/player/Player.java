@@ -1,5 +1,6 @@
-package me.dhk.game.model;
+package me.dhk.game.model.player;
 
+import me.dhk.game.model.Acceptable;
 import me.dhk.game.model.algo.IAlgorithm;
 import me.dhk.game.service.IRemoteService;
 
@@ -30,4 +31,10 @@ public abstract class Player  implements Acceptable {
         }
         play(currentMove);
     }
+
+    boolean isStartingPlayer(){
+        return this.name.compareTo(opponentName) < 0;
+    }
+
+    public abstract void startPlay();
 }

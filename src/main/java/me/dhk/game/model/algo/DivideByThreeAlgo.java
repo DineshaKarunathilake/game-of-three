@@ -9,15 +9,15 @@ public class DivideByThreeAlgo implements IAlgorithm {
         switch (remainder){
             case 0:
                   result=move/3;
-                  System.out.println("Added 0");
+                  System.out.print("Added  0 ");
                   break;
             case 1:
                 result=(move-1)/3;
-                System.out.println("Added -1");
+                System.out.print("Added -1 ");
                 break;
             case 2:
                 result=(move+1)/3;
-                System.out.println("Added +1");
+                System.out.print("Added +1 ");
                 break;
             default:
                 throw new RuntimeException(); // This will not be executed

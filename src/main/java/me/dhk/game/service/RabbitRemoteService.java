@@ -16,6 +16,7 @@ public class RabbitRemoteService implements IRemoteService {
 
     @Override
     public void sendMove(String opponent, int move) {
+
         String message= String.valueOf(move);
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(HOST_NAME);
@@ -23,11 +24,9 @@ public class RabbitRemoteService implements IRemoteService {
              Channel channel = connection.createChannel()) {
             channel.queueDeclare(opponent, false, false, false, null);
             channel.basicPublish("", opponent, null, message.getBytes(StandardCharsets.UTF_8));
-            System.out.println(" [x] Sending  " + message + "");
-        } catch (TimeoutException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+            System.out.print("Sending " + message + "\n");
+        } catch (TimeoutException | IOException exception) {
+            exception.printStackTrace();
         }
 
     }
@@ -42,16 +41,15 @@ public class RabbitRemoteService implements IRemoteService {
             Channel channel = connection.createChannel();
 
             channel.queueDeclare(playerName, false, false, false, null);
-
             DeliverCallback deliverCallback = (consumerTag, delivery) -> {
                 String message = new String(delivery.getBody(), "UTF-8");
-                System.out.println(" [x] Received " + message + "");
+                System.out.println("         Received " + message + "");
                 acceptable.accept(Integer.parseInt(message));
             };
             channel.basicConsume(playerName, true, deliverCallback, consumerTag -> { });
-        } catch (Exception exception) {
+        } catch (TimeoutException | IOException exception) {
 
-            System.out.println("Something went wrong!!!");
+            exception.printStackTrace();
         }
     }
 }
